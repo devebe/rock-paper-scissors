@@ -7,37 +7,41 @@ function getComputerChoice() {
     (computerNumber === 3) ? computerSelection = 'Scissors':
     'This is weird'; // This exception case will never happen ??
 
-    console.log(`Computer: ${computerSelection}`); // Logs outcome to the console
-    return computerSelection;
+    return computerSelection; // Returns computerSelection
 }
 
 function getplayerSelection() {
-    // let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase(); // Prompts user to type a choice
-    // playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1); // Converts playerSelection to formatted string
-
     loop:
     while (true) {
         let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase();
         playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1);
+        // Captures and converts text input from user to string with formatting
+
         switch (playerSelection) {
-            case ("Rock" || "Paper" || "Scissors"):
+            case "Rock":
+                return playerSelection;
+                break loop;
+            case "Paper":
+                return playerSelection;
+                break loop;
+            case "Scissors":
                 return playerSelection;
                 break loop;
             default:
                 alert(`${playerSelection} is not a valid option. Please make a choice between Rock, Paper or Scissors`);
         }
+        // Checks text input against possible options
     }
-    // (playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors') ? console.log(`User: ${playerSelection}`): // Logs
-    // console.error(`${playerSelection} is not an option. Please make a choice between Rock, Paper or Scissors`);
-
+    // Loops until user enters valid input (as requested by switch-statement)
 }
 
 function playRound() {
     let playerSelection = getplayerSelection();
     let computerSelection = getComputerChoice();
+    // Calls functions getPlayerSelection and getComputerChoice
 
-    let outcome = ''
-    let winner = '';
+    let outcome = ''; // Initializes string variable to store outcome
+    let winner = ''; // Initializes string variable to store winner
 
     if (playerSelection === computerSelection) {
         outcome = "It is a tie";
@@ -59,24 +63,23 @@ function playRound() {
             outcome = "The player wins this round"
             winner = "Player";
     }
+    // Checks playerSelection and computerSelection to determine win, lose or tie.
     
     outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. ${outcome}`;
-    console.log(outcome);
-    alert(outcome);
-    return winner;
+    alert(outcome); // Alerts the player who has won this round.
+    return winner; // Returns string with winner.
 }
 
 function game() {
-    const roundsOfGame = 5;
-    let playerScore = 0;
-    let computerScore = 0;
+    const roundsOfGame = 5; //Sets the amount of rounds that will be played
+    let playerScore = 0; //Initializes integer variable to keep track of playerScore
+    let computerScore = 0; //Initializes integer variable to keep track of computerScore
 
     for (let i = 0; i < roundsOfGame; i++) {
 
         let score = playRound();
         playerScore = playerScore;
         computerScore = computerScore;
-        console.log(score);
 
         if (score === 'Computer') {
             computerScore = computerScore + 1;
@@ -92,7 +95,13 @@ function game() {
             console.log("This is weird.");
         };
 
-        console.table([playerScore,computerScore]);
+        const scorekeeping = function (player,computer){
+            this.player = playerScore;
+            this.computer = computerScore;
+        };
+        console.table(scorekeeping);
+
+        console.table([playerScore,computerScore]); // Keeps track of score after round.
     }
 
     if (playerScore > computerScore) {
@@ -107,6 +116,7 @@ function game() {
         console.log(`Player and computer tied after 5 rounds by ${computerScore} against ${playerScore}`);
         alert(`Player and computer tied after 5 rounds by ${computerScore} against ${playerScore}`);
     }
+    // Responds with outcome after 5 rounds to show who won or tied.
 }
 
 game();
