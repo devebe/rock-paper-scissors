@@ -12,13 +12,24 @@ function getComputerChoice() {
 }
 
 function getplayerSelection() {
-    let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase(); // Prompts user to type a choice
-    playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1); // Converts playerSelection to formatted string
+    // let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase(); // Prompts user to type a choice
+    // playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1); // Converts playerSelection to formatted string
 
-    (playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors') ? console.log(`User: ${playerSelection}`): // Logs
-    console.error(`${playerSelection} is not an option. Please make a choice between Rock, Paper or Scissors`);
+    loop:
+    while (true) {
+        let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase();
+        playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1);
+        switch (playerSelection) {
+            case ("Rock" || "Paper" || "Scissors"):
+                return playerSelection;
+                break loop;
+            default:
+                alert(`${playerSelection} is not a valid option. Please make a choice between Rock, Paper or Scissors`);
+        }
+    }
+    // (playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors') ? console.log(`User: ${playerSelection}`): // Logs
+    // console.error(`${playerSelection} is not an option. Please make a choice between Rock, Paper or Scissors`);
 
-    return playerSelection;
 }
 
 function playRound() {
