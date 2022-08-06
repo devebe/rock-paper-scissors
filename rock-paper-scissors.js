@@ -1,40 +1,43 @@
 function getComputerChoice() {
     let computerNumber = Math.floor((Math.random()* 3) + 1); // Returns 1, 2 or 3 at random
-    let computerChoice = ''; // Initialize computerChoice as a string
+    let computerSelection = ''; // Initialize computerSelection as a string
 
-    (computerNumber === 1) ? computerChoice = 'Rock':
-    (computerNumber === 2) ? computerChoice = 'Paper':
-    (computerNumber === 3) ? computerChoice = 'Scissors':
+    (computerNumber === 1) ? computerSelection = 'Rock':
+    (computerNumber === 2) ? computerSelection = 'Paper':
+    (computerNumber === 3) ? computerSelection = 'Scissors':
     'This is weird'; // This exception case will never happen ??
 
-    console.log(`Computer chose ${computerChoice}`); // Logs outcome to the console
-    return computerChoice;
+    console.log(`Computer: ${computerSelection}`); // Logs outcome to the console
+    return computerSelection;
 }
 
-function getUserChoice() {
-    let userChoice = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase(); 
-    userChoice = userChoice.substring(0,1).toUpperCase()+userChoice.substring(1);
-    (userChoice === 'Rock' || userChoice === 'Paper' || userChoice === 'Scissors') ? console.log(`User chose ${userChoice}`):
-    console.error(`${userChoice} is not an option. Please make a choice between Rock, Paper or Scissors`);
-    return userChoice;
+function getplayerSelection() {
+    let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase(); // Prompts user to type a choice
+    playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1); // Converts playerSelection to formatted string
+
+    (playerSelection === 'Rock' || playerSelection === 'Paper' || playerSelection === 'Scissors') ? console.log(`User: ${playerSelection}`): // Logs
+    console.error(`${playerSelection} is not an option. Please make a choice between Rock, Paper or Scissors`);
+
+    return playerSelection;
 }
 
-function gamePlay() {
-    let userChoice = getUserChoice();
-    let computerChoice = getComputerChoice();
+function playRound() {
+    let playerSelection = getplayerSelection();
+    let computerSelection = getComputerChoice();
+    
     let outcome = '';
-    (userChoice === computerChoice) ? outcome = "It is a tie!" :
-    (userChoice === 'Rock' && computerChoice === 'Paper') ? outcome = "The computer wins!" :
-    (userChoice === 'Rock' && computerChoice === 'Scissors') ? outcome = "You win!" :
-    (userChoice === 'Scissors' && computerChoice === 'Rock') ? outcome = "The computer wins!" :
-    (userChoice === 'Scissors' && computerChoice === 'Paper') ? outcome = "You win!" :
-    (userChoice === 'Paper' && computerChoice === 'Scissors') ? outcome = "The computer wins!" :
-    (userChoice === 'Paper' && computerChoice === 'Rock') ? outcome = "You win!" :
+    (playerSelection === computerSelection) ? outcome = "It is a tie!" :
+    (playerSelection === 'Rock' && computerSelection === 'Paper') ? outcome = "The computer wins!" :
+    (playerSelection === 'Rock' && computerSelection === 'Scissors') ? outcome = "You win!" :
+    (playerSelection === 'Scissors' && computerSelection === 'Rock') ? outcome = "The computer wins!" :
+    (playerSelection === 'Scissors' && computerSelection === 'Paper') ? outcome = "You win!" :
+    (playerSelection === 'Paper' && computerSelection === 'Scissors') ? outcome = "The computer wins!" :
+    (playerSelection === 'Paper' && computerSelection === 'Rock') ? outcome = "You win!" :
     'This is weird'; // This exception case will never happen ??
     
-    outcome = `You chose ${userChoice} and the computer played ${computerChoice}. ${outcome}`;
+    outcome = `You chose ${playerSelection} and the computer played ${computerSelection}. ${outcome}`;
     console.log(outcome);
     alert(outcome);
 }
 
-gamePlay();
+playRound();
