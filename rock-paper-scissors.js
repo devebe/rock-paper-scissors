@@ -26,11 +26,11 @@ function playRound() {
     let computerSelection = getComputerChoice();
 
     let outcome = ''
-    let pScore = 0;
-    let cScore = 0;
+    let winner = '';
 
     if (playerSelection === computerSelection) {
         outcome = "It is a tie";
+        winner = "Nobody"
     }
     else if (
         (playerSelection === 'Rock' && computerSelection === 'Paper')||
@@ -38,7 +38,7 @@ function playRound() {
         (playerSelection === 'Paper' && computerSelection === 'Scissors')
         ) {
             outcome = "The computer wins this round"
-            cScore = 1;
+            winner = "Computer";
     }
     else if (
         (playerSelection === 'Rock' && computerSelection === 'Scissors')||
@@ -46,34 +46,55 @@ function playRound() {
         (playerSelection === 'Paper' && computerSelection === 'Rock')
         ) {
             outcome = "The player wins this round"
-            pScore = 1;
+            winner = "Player";
     }
     
-
-
-    
-    // let outcome = '';
-    // (playerSelection === computerSelection) ? outcome = "It is a tie!" :
-    // (playerSelection === 'Rock' && computerSelection === 'Paper') ? outcome = "The computer wins!" :
-    // (playerSelection === 'Rock' && computerSelection === 'Scissors') ? outcome = "You win!" :
-    // (playerSelection === 'Scissors' && computerSelection === 'Rock') ? outcome = "The computer wins!" :
-    // (playerSelection === 'Scissors' && computerSelection === 'Paper') ? outcome = "You win!" :
-    // (playerSelection === 'Paper' && computerSelection === 'Scissors') ? outcome = "The computer wins!" :
-    // (playerSelection === 'Paper' && computerSelection === 'Rock') ? outcome = "You win!" :
-    // 'This is weird'; // This exception case will never happen ??
-    
     outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. ${outcome}`;
-    console.table(outcome,pScore,cScore);
+    console.log(outcome);
     alert(outcome);
-    return pScore, cScore;
+    return winner;
 }
 
 function game() {
     const roundsOfGame = 5;
+    let playerScore = 0;
+    let computerScore = 0;
+
     for (let i = 0; i < roundsOfGame; i++) {
-        let playerScore = 0;
-        let computerScore = 0;
-        playRound();
+
+        let score = playRound();
+        playerScore = playerScore;
+        computerScore = computerScore;
+        console.log(score);
+
+        if (score === 'Computer') {
+            computerScore = computerScore + 1;
+        }
+        else if (score === 'Player') {
+            playerScore = playerScore + 1;
+        }
+        else if (score = 'Nobody') {
+            computerScore = computerScore;
+            playerScore = playerScore;
+        }
+        else {
+            console.log("This is weird.");
+        };
+
+        console.table([playerScore,computerScore]);
+    }
+
+    if (playerScore > computerScore) {
+        console.log(`Player won best of 5 rounds by ${playerScore} against ${computerScore}`);
+        alert(`Player won after 5 rounds by ${playerScore} against ${computerScore}`);
+    }
+    else if (playerScore < computerScore) {
+        console.log(`Computer won best of 5 rounds by ${computerScore} against ${playerScore}`);
+        alert(`Computer won after 5 rounds by ${computerScore} against ${playerScore}`);
+    }
+    else {
+        console.log(`Player and computer tied after 5 rounds by ${computerScore} against ${playerScore}`);
+        alert(`Player and computer tied after 5 rounds by ${computerScore} against ${playerScore}`);
     }
 }
 
