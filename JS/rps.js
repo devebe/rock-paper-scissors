@@ -51,7 +51,10 @@ function playRound(playerChoice) {
 function keepScore(winner) {
     const playerScores = document.getElementById('playerScore');
     const computerScores = document.getElementById('computerScore');
-    const result = document.getElementById('outcome');
+    const winText = document.getElementById('winnerDeclaration');
+    winText.classList.remove('bold');
+    winText.textContent = 'The winner is the player that reaches 5 wins first.'
+
     
     if (winner === 'Player') {
         playerScore = playerScore + 1;
@@ -66,12 +69,13 @@ function keepScore(winner) {
     if ((playerScore === 5) && (computerScore < 5)) {
         playerScore = 0;
         computerScore = 0;
-        result.textContent = "Player has won!";
+        winText.textContent = "Player has won!";
+        winText.classList.add('bold')
     }
     else if ((playerScore < 5) && (computerScore === 5)) {
         playerScore = 0;
         computerScore = 0;
-        result.textContent = "Computer has won!";
+        winText.textContent = "Computer has won!";
+        winText.classList.add('bold')
     }
-    
 }

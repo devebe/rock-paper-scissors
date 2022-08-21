@@ -58,18 +58,15 @@
     font-size: 120px;
 }
 
-.img {
-    width: 240px;
-    height: 240px;
-}
-
 .light .rectangle {
     border: 2px solid #a4a4a4;
+    background-color: #ebebeb;
     object-fit: cover;
 }
 
 .dark .rectangle {
     border: 2px solid #505050;
+    background-color: #242424;
     object-fit: cover;
 }
 
@@ -97,7 +94,6 @@ button {
 
 .light button:hover {
     border: 2px solid #1e1e1e80;
-    box-shadow: 0px 8px 8px #00000035;
     top: -2px;
 }
 
@@ -105,6 +101,8 @@ button {
     top: 0;
     border: 2px solid #a4a4a4;
     box-shadow: none;
+    scale: 0.95;
+    transition: 0.3s;
 }
 
 .dark button {
@@ -118,7 +116,6 @@ button {
 
 .dark button:hover {
     border: 2px solid #e4e4e480;
-    box-shadow: 0px 8px 8px #00000075;
     top: -2px;
     transition: top ease 0.3s;
 }
@@ -127,5 +124,18 @@ button {
     top: 0;
     border: 2px solid #505050;
     box-shadow: none;
+    scale: 0.95;
+    transition: 0.3s;
+}
+
+#winnerDeclaration {
+    font-weight: 400;
+}
+
+.bold {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.5;
+    text-transform: uppercase;
 }
 
