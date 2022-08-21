@@ -5,17 +5,22 @@
     <link rel="stylesheet" href="style.css">
     <title>Let's Play: Rock, Paper, Scissors</title>
     <script src="./JS/set-ui-mode.js" defer></script>
-    <script src="./JS/rock-paper-scissors.js" defer></script>
+    <script src="./JS/rps.js" defer></script>
 </head>
 <body>
     <div class="container">
         <div id="outcome" class="rectangle">
-            
+            Click on one of the buttons to play.
         </div>
-        <div class="buttons">
-            <button id="Rock">ROCK</button>
-            <button id="Paper">PAPER</button>
-            <button id="Scissors">SCISSORS</button>
+        <div class="scores">
+            <div id="playerScore" class="rectangle">0</div>
+            <div id="computerScore" class="rectangle">0</div>
+        </div>
+        
+        <div class="buttons rectangle">
+            <button id="Rock" class="Rock">ROCK</button>
+            <button id="Paper" class="Paper">PAPER</button>
+            <button id="Scissors" class="Scissors">SCISSORS</button>
         </div>
     </div>
 </body>
