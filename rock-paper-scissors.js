@@ -119,5 +119,4 @@ function game() {
     // Responds with outcome after 5 rounds to show who won or tied.
 }
 
-
 // game();
