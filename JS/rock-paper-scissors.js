@@ -1,9 +1,22 @@
-const playerChoice = addEventListener('click', e => {
-    if (e.target.id === 'Rock' || e.target.id === 'Paper' || e.target.id === 'Scissors') {
-        playRound(e.target.id);
+
+const gamePlay = addEventListener('click', e => {
+    const roundsOfGame = 5;
+    for (let i = 0; i < roundsOfGame; i++) {
+        if (e.target.id === 'Rock' || e.target.id === 'Paper' || e.target.id === 'Scissors') {
+            console.log(e.target.id);
+            playRound(e.target.id);
+        }
+        else return;
     }
-    else return;
-});
+})
+
+
+// const playerChoice = addEventListener('click', e => {
+//     if (e.target.id === 'Rock' || e.target.id === 'Paper' || e.target.id === 'Scissors') {
+//         playRound(e.target.id);
+//     }
+//     else return;
+// });
 
 function getComputerChoice() {
     let computerNumber = Math.floor((Math.random()* 3) + 1); // Returns 1, 2 or 3 at random
@@ -15,31 +28,6 @@ function getComputerChoice() {
     'This is weird'; // This exception case will never happen ??
 
     return computerSelection; // Returns computerSelection
-}
-
-function getplayerSelection() {
-    loop:
-    while (true) {
-        let playerSelection = prompt("What will you choose: Rock, Paper or Scissors?",'').toLowerCase();
-        playerSelection = playerSelection.substring(0,1).toUpperCase()+playerSelection.substring(1);
-        // Captures and converts text input from user to string with formatting
-
-        switch (playerSelection) {
-            case "Rock":
-                return playerSelection;
-                break loop;
-            case "Paper":
-                return playerSelection;
-                break loop;
-            case "Scissors":
-                return playerSelection;
-                break loop;
-            default:
-                alert(`${playerSelection} is not a valid option. Please make a choice between Rock, Paper or Scissors`);
-        }
-        // Checks text input against possible options
-    }
-    // Loops until user enters valid input (as requested by switch-statement)
 }
 
 function playRound(playerChoice) {
@@ -78,14 +66,14 @@ function playRound(playerChoice) {
     return winner; // Returns string with winner.
 }
 
-function game() {
+function game(playerChoice) {
     const roundsOfGame = 5; //Sets the amount of rounds that will be played
     let playerScore = 0; //Initializes integer variable to keep track of playerScore
     let computerScore = 0; //Initializes integer variable to keep track of computerScore
 
     for (let i = 0; i < roundsOfGame; i++) {
 
-        let score = playRound();
+        let score = playRound(playerChoice);
         playerScore = playerScore;
         computerScore = computerScore;
 
@@ -127,6 +115,6 @@ function game() {
     // Responds with outcome after 5 rounds to show who won or tied.
 }
 
-game();
+// game();
 
 
