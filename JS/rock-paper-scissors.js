@@ -1,5 +1,7 @@
 const playerChoice = addEventListener('click', e => {
-    playRound(e.target.id);
+    if (e.target.id != null || e.target.id != undefined) {
+        playRound(e.target.id);
+    }
 });
 
 function getComputerChoice() {
@@ -48,7 +50,7 @@ function playRound(playerChoice) {
     let winner = ''; // Initializes string variable to store winner
 
     if (playerSelection === computerSelection) {
-        outcome = "It is a tie";
+        outcome = "It is a tie.";
         winner = "Nobody"
     }
     else if (
@@ -56,7 +58,7 @@ function playRound(playerChoice) {
         (playerSelection === 'Scissors' && computerSelection === 'Rock') ||
         (playerSelection === 'Paper' && computerSelection === 'Scissors')
         ) {
-            outcome = "The computer wins this round"
+            outcome = "The computer wins this round."
             winner = "Computer";
     }
     else if (
@@ -64,13 +66,14 @@ function playRound(playerChoice) {
         (playerSelection === 'Scissors' && computerSelection === 'Paper') ||
         (playerSelection === 'Paper' && computerSelection === 'Rock')
         ) {
-            outcome = "The player wins this round"
+            outcome = "The player wins this round."
             winner = "Player";
     }
     // Checks playerSelection and computerSelection to determine win, lose or tie.
     
-    outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. ${outcome}`;
-    alert(outcome); // Alerts the player who has won this round.
+    outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. \n ${outcome}`;
+    const showOutcome = document.getElementById('outcome');
+    showOutcome.textContent = outcome;
     return winner; // Returns string with winner.
 }
 
