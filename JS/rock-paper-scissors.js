@@ -1,3 +1,7 @@
+const playerChoice = addEventListener('click', e => {
+    playRound(e.target.id);
+});
+
 function getComputerChoice() {
     let computerNumber = Math.floor((Math.random()* 3) + 1); // Returns 1, 2 or 3 at random
     let computerSelection = ''; // Initialize computerSelection as a string
@@ -35,8 +39,8 @@ function getplayerSelection() {
     // Loops until user enters valid input (as requested by switch-statement)
 }
 
-function playRound() {
-    let playerSelection = getplayerSelection();
+function playRound(playerChoice) {
+    let playerSelection = playerChoice;
     let computerSelection = getComputerChoice();
     // Calls functions getPlayerSelection and getComputerChoice
 
@@ -119,5 +123,6 @@ function game() {
     // Responds with outcome after 5 rounds to show who won or tied.
 }
 
-
 // game();
+
+
