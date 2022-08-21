@@ -1,7 +1,8 @@
 const playerChoice = addEventListener('click', e => {
-    if (e.target.id != null || e.target.id != undefined) {
+    if (e.target.id === 'Rock' || e.target.id === 'Paper' || e.target.id === 'Scissors') {
         playRound(e.target.id);
     }
+    else return;
 });
 
 function getComputerChoice() {
@@ -71,7 +72,7 @@ function playRound(playerChoice) {
     }
     // Checks playerSelection and computerSelection to determine win, lose or tie.
     
-    outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. \n ${outcome}`;
+    outcome = `Player chose ${playerSelection} and the computer chose ${computerSelection}. ${outcome}`;
     const showOutcome = document.getElementById('outcome');
     showOutcome.textContent = outcome;
     return winner; // Returns string with winner.
@@ -126,6 +127,6 @@ function game() {
     // Responds with outcome after 5 rounds to show who won or tied.
 }
 
-// game();
+game();
 
 
